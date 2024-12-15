@@ -11,7 +11,7 @@ WORKDIR /app
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/yarn.lock ./yarn.lock
-RUN yarn --network-timeout 1000000 --force
+RUN yarn --network-timeout 1000000 --force --refresh-lockfile
 
 # Build the project
 COPY --from=builder /app/out/full/ .
